@@ -1,7 +1,12 @@
 #header{
+    border-radius: 40px;
+   margin-top: 30px;
+    width:95%;
+    margin-left: 40px;
+    margin-right: 10px;
+    background-color: #753d75;
+    margin-bottom: 50px;
 
-    border-radius: 20px;
-   margin-top: 10px;
 
 }
 
@@ -76,7 +81,7 @@ img{
 }
 
 #ItemImage{
-    margin-top:40px;
+    margin-top:30px;
     box-shadow: rgb(193, 57, 203) 0px 5px 15px;
 }
 
@@ -103,6 +108,7 @@ img{
 
 .search-container{
     display:flex;
+    justify-content: space-between;
 }
 
 .Mytable{
@@ -112,11 +118,21 @@ img{
     padding: 27px
 }
 
+#formLabel{
+    color: #753d75;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-align: center;
+}
 
-
-
-
-
+button{
+    background-color: #753d75;
+    color: whitesmoke;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+/*-------------------------------------------------*/
 @media only screen and (max-width: 980px) {
     .Mytable{
         margin-left:0px;
@@ -135,6 +151,12 @@ img{
         margin-bottom: 30px;
     }
 
+
+}
+
+
+
+@media only screen and (max-width: 980px) {
 
 }
 
