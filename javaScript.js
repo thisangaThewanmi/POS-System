@@ -1,6 +1,7 @@
 $('#customer').css({display:'block'});
 $('#item').css({display:'none'});
 $('#order').css({display:'none'});
+$('#orderDetail').css({display:'none'});
 
 
 //student click

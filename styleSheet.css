@@ -35,16 +35,34 @@
     margin-top:20px;
     margin-left:40px;
     margin-bottom:30px;
-    text-shadow: rebeccapurple;
+
 }
 
 img{
     /*width: 300px;
     height: 309px;*/
-    width: 100%;
+    width: 50%;
     height: fit-content;
     box-shadow: rgb(193, 57, 203) 0px 5px 15px;
 }
+
+.Mrow{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.Mrow>div{
+    width:50%;
+    justify-content: space-between;
+    margin-right: 15px;
+}
+
+#customer_btn>button{
+    margin-right: 5%;
+    width: 18%;
+}
+
 
 .Mytable{
     margin-top:30px;
@@ -53,7 +71,7 @@ img{
 }
 
 #image{
-    margin-top:40px;
+    margin-top:8px;
     box-shadow: rgb(193, 57, 203) 0px 5px 15px;
 }
 
@@ -93,6 +111,7 @@ img{
     /* width: 79%; */
     padding: 27px
 }
+
 
 
 
