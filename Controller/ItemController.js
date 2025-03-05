@@ -1,5 +1,5 @@
 import {ItemModel} from "../Model/ItemModel.js";
-import{items} from "../db/db.js";
+import {customers, items} from "../db/db.js";
 
 var recordIndex;
 
@@ -70,16 +70,11 @@ $("#btnItemSave").on('click', () => {
         let item= new ItemModel(itemId,itemName,itemQty,itemPrice);
         items.push(item);
 
-
-        /*console.log(CustomerId);
-        console.log(CustomerName);
-        console.log(CustomerAddress);
-        console.log(CustomerContact);*/
-
         console.log(items);
 
         loadTable();
         $("#btnItemClear").click();
+        getCount();
 
 
     }
@@ -216,6 +211,58 @@ function validateAll() {
         return false;
     }
 }
+
+/*=================  GET COUNT =========================*/
+
+function getCount(){
+    $('#item-count').text(items.length);
+}
+
+
+/*===============  Item search   =========================*/
+
+$('#searchItemButton').on('click', function() {
+    var ItemName = $('#ItemSearchBar').val().trim(); // Get customer name from input
+
+    // Perform a check to ensure customerName is not empty
+    if (ItemName === '') {
+        alert('Please enter a item name.');
+        return;
+    }
+
+
+    var itemData = findItemByName(ItemName); // Replace with your actual function to fetch data
+
+
+
+    if(itemData){
+        alert("Item Found :)");
+    }else{
+        alert("Item Not Found :(");
+    }
+
+    $('#ItemSearchBar').val('');
+
+});
+
+
+// Function to simulate fetching customer data (replace with your actual backend call)
+function findItemByName(name) {
+
+    for (var i = 0; i < items.length; i++) {
+        if (name === items[i].Name) {
+            // console.log("itemName", items[i].Name);
+            $('#ItemId').val(items[i].id);
+            $('#ItemName').val(items[i].Name);
+            $('#ItemQty').val(items[i].qty);
+            $('#ItemPrice').val(items[i].price);
+            return true;
+        }
+    }
+
+}
+
+
 
 
 

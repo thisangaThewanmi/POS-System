@@ -194,7 +194,7 @@
               <div class="search-container">
                 <input type="text" class="form-control"  id="ItemSearchBar" placeholder="Search by Name">
 
-                <button  id="searchButton" type="button" class="btn btn-success">Search</button>
+                <button  id="searchItemButton" type="button" class="btn btn-success">Search</button>
               </div>
             </div>
           </div>
@@ -209,7 +209,7 @@
 
               <div class="card-body text-center">
                 <div class="fw-bold">Total Items</div>
-                <div class="fs-4 fw-bold text-primary">150</div>
+                <div class="fs-4 fw-bold text-primary" id="item-count">0</div>
                 <div class="fs-3 text-secondary">
                   <i class="fas fa-users"></i> <!-- Font Awesome icon -->
                 </div>
@@ -254,7 +254,7 @@
                 <div class="mb-3">
 
                     <label for="ItemPrice" class="form-label">Item Price</label>
-                    <input type="text" class="form-control" id="ItemPrice">
+                    <input type="text" class="form-control" id="ItemPrice" placeholder="Rs:">
                     <div id="error-ItemPrice" style="color: red"></div>
                 </div>
               </div>
