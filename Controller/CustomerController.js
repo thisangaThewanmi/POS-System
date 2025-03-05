@@ -71,31 +71,20 @@ $("#Cus-table-body").on('click', 'tr' , function () {
             alert("Customer Saved");
 
 
-            /*console.log(CustomerId);
+            console.log(CustomerId);
             console.log(CustomerName);
             console.log(CustomerAddress);
-            console.log(CustomerContact);*/
+            console.log(CustomerContact);
 
             console.log(customers);
 
             loadTable();
-            $("#btnCusClear").click();
-
-
+            clearData();
+            getCount();
 
 
         }
-
-
-
-
-
-
-
-
-
-
-});
+    });
 
 
 /*=====================Update a customer===========================*/
@@ -118,7 +107,7 @@ $("#btnCusUpadate").on('click', () => {
     customerObj.contactNo = CustomerContact;
 
     loadTable();
-    $("#btnCusClear").click();
+    clearData()
 });
 
 
@@ -129,17 +118,17 @@ $("#btnCusDelete").on('click', () => {
     customers.splice(recordIndex, 1);
 
     loadTable();
-    $("#btnCusClear").click();
+    clearData()
 });
 
 
 
 
 function  validateCusId(){
-    console.log("validate method called");
+    // console.log("validate method called");
 
     var CustomerId = $("#cusId").val();
-    let pattern = /^C\d{3}$/;
+    let pattern = /^C-\d{3}$/;
 
 
     if (pattern.test(CustomerId)) {
@@ -147,7 +136,6 @@ function  validateCusId(){
         return true;
     } else {
         $('#error-msgId').html("Please enter the id in C-*** format");
-        console.log("Please enter the id in C-*** format");
         return false;
     }
 }
@@ -164,7 +152,7 @@ function  validateCusName(){
         return true;
     } else {
         $('#error-msgName').html("Please enter a valid name");
-        console.log("Please enter a valid name");
+        // console.log("Please enter a valid name");
         return false;
     }
 }
@@ -181,14 +169,14 @@ function  validateCusAddress(){
         return true;
     } else {
         $('#error-msgAddress').html("Please enter a valid address");
-        console.log("Please enter a valid Address");
+        // console.log("Please enter a valid Address");
         return false;
     }
 }
 
 
 function  validateCusContact(){
-    console.log("validate method called for Contact");
+    // console.log("validate method called for Contact");
 
     var CustomerContact = $("#cusContactNo").val();
     let pattern = /^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$/;
@@ -200,7 +188,7 @@ function  validateCusContact(){
         return true;
     } else {
         $('#error-msgContact').html("Please enter a valid address");
-        console.log("Please enter a valid Address");
+        // console.log("Please enter a valid Contact");
         return false;
     }
 }
@@ -240,7 +228,7 @@ function validateAll() {
 // Function to simulate fetching customer data (replace with your actual backend call)
 
     // Function to handle customer search
-    $('#searchButton').on('click', function() {
+    $('#searchCusButton').on('click', function() {
         var customerName = $('#CusSearchBar').val().trim(); // Get customer name from input
 
         // Perform a check to ensure customerName is not empty
@@ -272,7 +260,7 @@ function validateAll() {
             if (name === customers[i].Name) {
                 console.log("cusName", customers[i].Name);
                 $('#cusId').val(customers[i].id);
-                $('#cusName').val(customers[i].Name);
+                $('#cusFullname').val(customers[i].Name);
                 $('#cusAddress').val(customers[i].address);
                 $('#cusContactNo').val(customers[i].contactNo);
                 return true;
@@ -280,6 +268,25 @@ function validateAll() {
         }
 
     }
+
+    /* ============================ clear data  ==========================*/
+
+ function clearData(){
+     $("#cusId").val("");
+
+      $("#cusFullname").val("");
+
+      $("#cusAddress").val("");
+
+      $("#cusContactNo").val("");
+
+ }
+
+ /*=================  GET COUNT =========================*/
+
+function getCount(){
+    $('#cus-count').text(customers.length);
+}
 
 
 
