@@ -6,6 +6,8 @@
 
   <link rel="stylesheet" href="styleSheet.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 </head>
 <body id="body">
@@ -49,7 +51,9 @@
 
   <div  class="Container" class="order_container">
 
-    <label class="Label"> Customer Manage</label>
+    <label class="Label">
+      <i class="bi bi-person"></i> Customer Manage
+    </label>
 
     <!--row1 col1-->
     <div class="row">
@@ -62,13 +66,13 @@
               <div class="search-container">
                 <input type="text" class="form-control"  id="CusSearchBar" placeholder="Search by Name">
 
-                <button  id="searchButton" type="button" class="btn btn-success">Search</button>
+                <button  id="searchItemButton" type="button" class="btn btn-success">Search</button>
               </div>
             </div>
           </div>
 
 
-          <div id="ItemImage" class="card">
+          <div id="CustomerImage" class="card">
             <div class="card-body d-flex flex-row align-items-center justify-content-between">
               <!-- Image -->
               <img src="assests/images/cusFinal2.jpg" class="img-fluid" alt="Customer Image" style="max-width: 50%; border-radius: 8px;">
@@ -95,7 +99,7 @@
           <div class="card-body">
             <form>
 
-              <h2 id="formLabel">Customer Manage form</h2>
+              <h2 class="formLabel">Customer Manage form</h2>
               <hr>
 
                 <div class="Mrow">
@@ -122,7 +126,7 @@
                       </div>
 
 
-                      <div id="customer_btn" class="mt-2">
+                      <div class="btns" class="mt-2">
                         <button type="button" class="btn btn-success">Save</button>
                         <button type="button" class="btn btn-primary">Update</button>
                         <button type="button" class="btn btn-danger">Delete</button>
@@ -150,8 +154,9 @@
               </tr>
               </thead>
               <tbody id="Cus-table-body">
-             <!------ tr tika  -------->
+              <!------ tr tika  -------->
               </tbody>
+            </table>
             </table>
           </div>
         </div>
@@ -164,12 +169,15 @@
 
 
 
-<!-----Item------->
+<!--ItemSection-->
 <section id="item">
-  <label class="Label"> Item Manage</label>
+
 
   <div  class="Container" class="order_container">
 
+    <label class="Label">
+      <i class="fas fa-box"></i> Item Details
+    </label>
 
     <!--row1 col1-->
     <div class="row">
@@ -177,82 +185,88 @@
 
         <div  class="searchZone"  class="col col-lg-6 col-md-12 col-sm-12 col-12">
 
-          <div class="card">
+          <div  class="card">
             <div class="card-body">
               <div class="search-container">
-                <input type="text" class="form-control" id="searchText" placeholder="search here">
-                <button type="button" class="btn btn-success">Search</button>
+                <input type="text" class="form-control"  id="ItemSearchBar" placeholder="Search by Name">
+
+                <button  id="searchButton" type="button" class="btn btn-success">Search</button>
               </div>
             </div>
           </div>
 
-          <div id="image" class="card">
-            <div   class="card-body">
-              <img src="assests/images/Items.jpg">
+
+          <div id="ItemImage" class="card">
+            <div class="card-body d-flex flex-row align-items-center justify-content-between">
+              <!-- Image -->
+              <img src="assests/images/Items.jpg" class="img-fluid" alt="Item Image" style="max-width: 40% ; border-radius: 8px;">
+
+              <!-- Nested Card: Total Customers -->
+
+              <div class="card-body text-center">
+                <div class="fw-bold">Total Items</div>
+                <div class="fs-4 fw-bold text-primary">150</div>
+                <div class="fs-3 text-secondary">
+                  <i class="fas fa-users"></i> <!-- Font Awesome icon -->
+                </div>
+              </div>
+
             </div>
           </div>
+
         </div>
       </div>
 
 
-
-      <div id="itemForm"  class="col col-lg-6 col-md-12 col-sm-12 col-12">
+      <div  class="col col-lg-6 col-md-12 col-sm-12 col-12">
         <div class="card">
           <div class="card-body">
             <form>
 
-              <div class="mb-3">
-                <label for="ItemId" class="form-label">Item Id</label>
-                <input type="text" class="form-control" id="ItemId">
-                <div id="error-ItemId" style="color: red"></div>
-              </div>
-              <div class="mb-3">
-                <label for="ItemName" class="form-label">Item Name</label>
-                <input type="text" class="form-control" id="ItemName">
-                <div id="error-ItemName" style="color: red"></div>
+              <h2 class="formLabel">Item Manage form</h2>
+              <hr>
+
+              <div class="Mrow">
+                <div class="mb-3">
+                  <label for="ItemId" class="form-label">Item Id</label>
+                  <input type="text" class="form-control" id="ItemId">
+                  <div id="error-ItemId" style="color: red"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="ItemName" class="form-label">Item Name</label>
+                  <input type="text" class="form-control" id="ItemName">
+                  <div id="error-ItemName" style="color: red"></div>
+                </div>
               </div>
 
-              <div class="row">
-                <div class="col">
-                  <div class="mb-3">
-                    <label for="ItemQty" class="form-label">Item Quantity</label>
-                    <textarea class="form-control" id="ItemQty" style="height: 65px"></textarea>
-                    <div id="error-ItemQty" style="color: red"></div>
-                  </div>
+
+              <div class="Mrow">
+                <div class="mb-3">
+                  <label for="ItemQty" class="form-label">Item Quantity</label>
+                  <input type="text" class="form-control" id="ItemQty">
+                  <div id="error-ItemQty" style="color: red"></div>
                 </div>
 
-                <div class="col">
-                  <div class="mb-3">
+                <div class="mb-3">
+
                     <label for="ItemPrice" class="form-label">Item Price</label>
                     <input type="text" class="form-control" id="ItemPrice">
                     <div id="error-ItemPrice" style="color: red"></div>
-                  </div>
                 </div>
               </div>
-              <div id="item_btn" class="mt-5">
+
+
+              <div class="btns" class="mt-5">
                 <button id="btnItemSave"  type="button" class="btn btn-success">Save</button>
                 <button id="btnItemUpdate"  type="button" class="btn btn-primary">Update</button>
                 <button id="btnItemDelete"  type="button" class="btn btn-danger">Delete</button>
                 <button id="btnItemClear"  type="reset" class="btn btn-warning">Clear</button>
               </div>
+
             </form>
           </div>
         </div>
       </div>
-
-
-
-
-
-
-      <!--row-1 col-3-->
-      <!--<div  id="row-1col-3"  class="col col-lg-6 col-md-12 col-sm-12 col-12">
-        <div class="card">
-          &lt;!&ndash; <div class="card-body">
-             This is some text within a card body.
-           </div>&ndash;&gt;
-        </div>
-      </div>-->
     </div>
 
     <!--------------------row 2--------------------->
@@ -284,177 +298,169 @@
 </section>
 
 
-
 <!-----placeorder------>
-<section id="order">
-  <label class="Label"> PlaceOrders</label>
+<section id="placeOrder">
 
   <div  class="Container" class="order_container">
+    <label class="Label">
+      <i class="fas fa-shopping-cart"></i> Place Order
+    </label>
+  <div class="container">
     <div class="row">
-      <div  class="col col-lg-4 col-md-12 col-sm-12 col-12">
+      <!-- First Column -->
+      <div class="col-md-4">
+        <!-- Customer Details -->
+        <div class="card mb-3">
+          <div class="card-header">Customer Details</div>
+          <div class="card-body">
+            <div class="Mrow">
+              <div class="mb-3">
+                <label for="order-cus-id" class="form-label">Item Code</label>
+                <select class="form-select form-select-sm" id="order-cus-id" aria-label="Small select example">
+                  <option selected>Cus IDs</option>
+                  <option value="1">I001</option>
+                  <option value="2">I002</option>
+                  <option value="3">I003</option>
+                </select>
+                <div id="error-order-cus-id" style="color: red"></div>
+              </div>
+
+              <div class="mb-3">
+                <label for="order-cus-name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="order-cus-name" placeholder="Customer Name">
+                <div id="error-order-cus-name" style="color: red"></div>
+              </div>
+            </div>
 
 
-        <div class="card searchCustomerCard" class="orderCards">
-          <div class="header" id="invoiceDetailCard">
-            Invoice Details
+
           </div>
-          <div class="card-body invoiceDetailsInputs">
-            <div class="mb-3">
-              <label for="orderID" class="form-label">Order ID</label>
-              <input type="text" class="form-control" id="orderID" placeholder="Order ID">
+        </div>
+        <!-- Item Details -->
+        <div class="card mb-3">
+          <div class="card-header">Item Details</div>
+          <div class="card-body">
+            <div class="Mrow">
+              <div class="mb-3">
+                <label for="order-item-id" class="form-label">Item Code</label>
+                <select class="form-select form-select-sm" id="order-item-id" aria-label="Small select example">
+                  <option selected>Item IDs</option>
+                  <option value="1">I001</option>
+                  <option value="2">I002</option>
+                  <option value="3">I003</option>
+                </select>
+                <div id="error-order-item-id" style="color: red"></div>
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="orderDate" class="form-label">Date</label>
-              <input type="date" class="form-control" id="orderDate" placeholder="Date">
+            <div class="Mrow">
+              <div class="mb-3">
+                <label for="order-item-name" class="form-label">Item Name</label>
+                <input type="text" class="form-control" id="order-item-name" placeholder="Item Name">
+                <div id="error-order-item-name" style="color: red"></div>
+              </div>
+              <div class="mb-3">
+                <label for="order-item-price" class="form-label">Price</label>
+                <input type="text" class="form-control" id="order-item-price" placeholder="Item Unit Price">
+                <div id="error-order-item-price" style="color: red"></div>
+              </div>
             </div>
-            <div id="searchCusId">
-              <label for="orderCusId" class="form-label">Customer ID</label>
-              <select class="form-select form-select-sm" id="orderCusId" aria-label="Small select example">
-               <!-- <option selected>Cus ID</option>
-                <option value="1">I001</option>
-                <option value="2">I002</option>
-                <option value="3">I003</option>-->
-              </select>
+            <div class="Mrow">
+              <div class="mb-3">
+                <label for="order-item-qty" class="form-label">Qty</label>
+                <input type="text" class="form-control" id="order-item-qty" placeholder="Item Qty On Hand">
+                <div id="error-order-item-qty" style="color: red"></div>
+              </div>
+              <div class="mb-3">
+                <label for="order-item-oqty" class="form-label">Order Quantity</label>
+                <input type="text" class="form-control" id="order-item-oqty" placeholder="Order Quantity">
+                <div id="error-order-item-oqty" style="color: red"></div>
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="orderCusName" class="form-label">Customer Name</label>
-              <input type="text" class="form-control" id="orderCusName" placeholder="Customer Name">
-            </div>
-            <div class="mb-3">
-              <label for="orderCusAddress" class="form-label">Customer Address</label>
-              <input type="text" class="form-control" id="orderCusAddress" placeholder="Customer Address">
-            </div>
-            <div class="mb-3">
-              <label for="orderCusContact" class="form-label">Customer Contact</label>
-              <input type="text" class="form-control" id="orderCusContact" placeholder="Customer Contact">
-            </div>
-          </div>
-        </div><!--//CARD EKE-->
-
-      </div>
-
-
-
-      <div  class="col col-lg-4 col-md-12 col-sm-12 col-12">
-
-        <div class="card searchCustomerCard"  class="orderCards">
-          <div class="header" id="ItemDetailCard">
-            Item Details
-          </div>
-          <div class="card-body itemDetailsInputs">
-            <div id="searchItemId">
-              <label for="O-itemID" class="form-label">Item Code</label>
-              <select class="form-select form-select-sm" id="O-itemID" aria-label="Small select example">
-              <!--  <option selected>Item IDs</option>-->
-                <!--<option value="1">I001</option>
-                <option value="2">I002</option>
-                <option value="3">I003</option>-->
-              </select>
-            </div>
-            <div class="mb-3">
-              <label for="O-itemName" class="form-label">Item Name</label>
-              <input type="text" class="form-control" id="O-itemName" placeholder="Item Name">
-            </div>
-            <div class="mb-3">
-              <label for="O-itemPrice" class="form-label">Price</label>
-              <input type="text" class="form-control" id="O-itemPrice" placeholder="Item Unit Price">
-            </div>
-            <div class="mb-3">
-              <label for="O-itemQty" class="form-label">Qty</label>
-              <input type="text" class="form-control" id="O-itemQty" placeholder="Item Qty On Hand">
-            </div>
-            <div class="mb-3">
-              <label for="O-orderQty" class="form-label">Order Quantity</label>
-              <input type="text" class="form-control" id="O-orderQty" placeholder="Order Quantity">
-            </div>
-            <div class="mb-3">
-              <button id="btnAddItem"  type="button" class="btn btn-danger">Add Item</button>
+            <div class="Mrow">
+              <div class="mb-3">
+                <button type="button" id="order-addItem" class="btn btn-danger" >ADD Item</button>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
 
-
-      <div  class="col col-lg-4 col-md-12 col-sm-12 col-12">
-        <div class="card searchCustomerCard"  class="orderCards">
-
+      <!-- Second Column -->
+      <div class="col-md-4">
+        <!-- Order Details -->
+        <div class="card mb-3">
+          <div class="card-header">Order Details</div>
           <div class="card-body">
-            <div >
-              <h2  >Total :Rs. <span id="totalPriceLabel"> </span></h2>
-              <h2></h2>
+            <div class="Mrow">
+              <div class="mb-3">
+                <label for="orderID" class="form-label">Order ID</label>
+                <input type="text" class="form-control" id="orderID" placeholder="Order ID">
+                <div id="error-orderID" style="color: red"></div>
+              </div>
+              <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" placeholder="Date">
+                <div id="error-date" style="color: red"></div>
+              </div>
             </div>
-            <div >
-              <h2  >SubTotal :Rs. <span id="subTotalPriceLabel"> </span></h2>
+          </div>
+        </div>
+        <!-- Amount Section -->
+        <div class="card mb-3">
+          <div class="card-header">Amount Details</div>
+          <div class="card-body">
+            <div class="mb-3">
+              <h2>Total : Rs: </h2>
               <h2></h2>
             </div>
             <div class="mb-3">
-              <label for="cash"  class="form-label">Cash</label>
-              <input type="text" class="form-control" id="cash" placeholder="Cash Amount">
+              <h2>Sub Total : Rs:</h2>
+              <h2></h2>
             </div>
-            <div class="mb-3">
-              <label for="discount" class="form-label">Discount %</label>
-              <input type="number" class="form-control" id="discount" placeholder="Discount Amount">
+
+            <div class="Mrow">
+              <div class="mb-3">
+                <label for="cash" class="form-label">Cash</label>
+                <input type="text" class="form-control" id="cash" placeholder="Cash Amount">
+                <div id="error-cash" style="color: red"></div>
+              </div>
+              <div class="mb-3">
+                <label for="discount" class="form-label">Discount %</label>
+                <input type="number" class="form-control" id="discount" placeholder="Discount Amount">
+                <div id="error-discount" style="color: red"></div>
+              </div>
             </div>
+
             <div class="mb-3">
               <label for="balance" class="form-label">Balance</label>
               <input type="text" class="form-control" id="balance" placeholder="Balance">
+              <div id="error-balance" style="color: red"></div>
             </div>
             <div class="mb-3">
-              <button type="button" id="btnPlaceOrder" class="btn btn-success" data-bs-toggle="modal"  data-bs-target="#place-order-modal">Place Order</button>
-
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#place-order-modal">Place Order</button>
             </div>
           </div>
         </div>
       </div>
-
-
-
-
-    </div><!--//row eke-->
-  </div><!--//container-->
-
-
-  <div  class="Container" class="order_container">
-    <div class="row">
-      <div  class="table" class="col col-lg-11 col-md-12 col-sm-12 col-12">
+      <!-- Third Column -->
+      <div class="col-md-4">
         <div class="card">
           <div class="card-body">
-            <table class="table table-striped">
+            <table class="table">
               <thead>
               <tr>
-                <th scope="col" >ItemCode</th>
-                <th scope="col" >ItemName</th>
-                <th scope="col" >qty</th>
-                <th scope="col" >Price</th>
-                <th scope="col" >Total</th>
+                <th scope="col">Name</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
               </tr>
               </thead>
-              <tbody id="item-cart-tablebody">
-             <!-- <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
+              <tbody>
               <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
+
+
+
               </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>-->
               </tbody>
             </table>
           </div>
@@ -466,9 +472,11 @@
 </section>
 
 
-
+<!--order details-->
 <section id="orderDetail">
-  <label class="Label">OrderDetails</label>
+  <label class="Label">
+    <i class="fas fa-file-invoice"></i> Order Summary
+  </label>
   <div class="Container order_container">
     <div class="row">
       <div class="table" class="col col-lg-11 col-md-12 col-sm-12 col-12">

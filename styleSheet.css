@@ -1,11 +1,11 @@
 #header{
     border-radius: 40px;
-   margin-top: 30px;
+   margin-top: 21px;
     width:95%;
     margin-left: 40px;
     margin-right: 10px;
     background-color: #753d75;
-    margin-bottom: 50px;
+    margin-bottom: 29px;
 
 
 }
@@ -36,10 +36,10 @@
 
 .Label{
     color: white;
-    font-size: 32px;
-    margin-top:20px;
+    font-size: 28px;
+    margin-top:10px;
     margin-left:40px;
-    margin-bottom:30px;
+    margin-bottom:10px;
 
 }
 
@@ -63,7 +63,7 @@ img{
     margin-right: 15px;
 }
 
-#customer_btn>button{
+.btns>button{
     margin-right: 5%;
     width: 18%;
 }
@@ -80,10 +80,14 @@ img{
     box-shadow: rgb(193, 57, 203) 0px 5px 15px;
 }
 
-#ItemImage{
+.CustomerImage{
     margin-top:30px;
     box-shadow: rgb(193, 57, 203) 0px 5px 15px;
 }
+
+/*#ItemImage{*/
+/*    width:50%*/
+/*}*/
 
 
 #row-1col-2{
@@ -118,7 +122,7 @@ img{
     padding: 27px
 }
 
-#formLabel{
+.formLabel{
     color: #753d75;
     margin-top: 5px;
     margin-bottom: 20px;

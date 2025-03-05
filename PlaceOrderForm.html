@@ -1,221 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>placeOrdersss</title>
-
-  <link rel="stylesheet" href="styleSheet.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <meta charset="UTF-8">
+    <title>PlaceOrders</title>
+    <link rel="stylesheet" href="styleSheet.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body id="body">
-<header >
-  <nav id="header" class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a  id="logo" class="navbar-brand" href="#">StoreSwift</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">
-                </span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="CustomerForm.html">Customer</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="ItemForm.html">Item</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="PlaceOrderForm.html">PlaceOrder</a>
-          </li>
 
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+<header>
+    <nav id="header" class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a id="logo" class="navbar-brand" href="#">StoreSwift</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="CustomerForm.html">Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="ItemForm.html">Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="PlaceOrderForm.html">PlaceOrder</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 </header>
 
-<!---------------body----------------->
-
 <section id="placeOrder">
-  <label class="Label"> PlaceOrders</label>
+    <label class="Label">PlaceOrders</label>
+    <div class="container">
+        <div class="row">
+            <!-- First Column -->
+            <div class="col-md-4">
+                <!-- Customer Details -->
+                <div class="card mb-3">
+                    <div class="card-header">Customer Details</div>
+                    <div class="card-body">
+                        <div class="Mrow">
+                            <div class="mb-3">
+                                <label for="customerIdSelect" class="form-label">Customer ID</label>
+                                <input type="text" class="form-control" id="customerIdSelect" placeholder="Customer ID">
+                                <div id="error-customerIdSelect" style="color: red"></div>
+                            </div>
 
-  <div  class="Container" class="order_container">
-    <div class="row">
-      <div  class="col col-lg-4 col-md-12 col-sm-12 col-12">
-
-
-        <div id="invoiceDetails" class="card searchCustomerCard">
-          <div class="header" id="invoiceDetailCard">
-            Invoice Details
-          </div>
-          <div class="card-body invoiceDetailsInputs">
-            <div class="mb-3">
-              <label for="orderID" class="form-label">Order ID</label>
-              <input type="text" class="form-control" id="orderID" placeholder="Order ID">
-            </div>
-            <div class="mb-3">
-              <label for="date" class="form-label">Date</label>
-              <input type="date" class="form-control" id="date" placeholder="Date">
-            </div>
-            <div class="mb-3">
-              <label for="customerIdSelect" class="form-label">Customer ID</label>
-              <input type="text" class="form-control" id="customerIdSelect" placeholder="Customer ID">
-            </div>
-            <div class="mb-3">
-              <label for="customerId" class="form-label">Selected Customer</label>
-              <input type="text" class="form-control" id="customerId" placeholder="Customer ID">
-            </div>
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Customer Name">
-            </div>
-            <div class="mb-3">
-              <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="Customer Address">
-            </div>
-          </div>
-        </div><!--//CARD EKE-->
-
-      </div>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Customer Name">
+                                <div id="error-name" style="color: red"></div>
+                            </div>
+                        </div>
 
 
 
-      <div  class="col col-lg-4 col-md-12 col-sm-12 col-12">
+                    </div>
+                </div>
+                <!-- Item Details -->
+                <div class="card mb-3">
+                    <div class="card-header">Item Details</div>
+                    <div class="card-body">
+                        <div class="Mrow">
+                            <div class="mb-3">
+                                <label for="itemID" class="form-label">Item Code</label>
+                                <select class="form-select form-select-sm" id="itemID" aria-label="Small select example">
+                                    <option selected>Item IDs</option>
+                                    <option value="1">I001</option>
+                                    <option value="2">I002</option>
+                                    <option value="3">I003</option>
+                                </select>
+                                <div id="error-itemID" style="color: red"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="itemCode" class="form-label">Item Code</label>
+                                <input type="text" class="form-control" id="itemCode" placeholder="Item Code">
+                                <div id="error-itemCode" style="color: red"></div>
+                            </div>
+                        </div>
+                        <div class="Mrow">
+                            <div class="mb-3">
+                                <label for="itemName" class="form-label">Item Name</label>
+                                <input type="text" class="form-control" id="itemName" placeholder="Item Name">
+                                <div id="error-itemName" style="color: red"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="itemPrice" class="form-label">Price</label>
+                                <input type="text" class="form-control" id="itemPrice" placeholder="Item Unit Price">
+                                <div id="error-itemPrice" style="color: red"></div>
+                            </div>
+                        </div>
+                        <div class="Mrow">
+                            <div class="mb-3">
+                                <label for="itemQty" class="form-label">Qty</label>
+                                <input type="text" class="form-control" id="itemQty" placeholder="Item Qty On Hand">
+                                <div id="error-itemQty" style="color: red"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="orderQty" class="form-label">Order Quantity</label>
+                                <input type="text" class="form-control" id="orderQty" placeholder="Order Quantity">
+                                <div id="error-orderQty" style="color: red"></div>
+                            </div>
+                        </div>
+                        <div class="Mrow">
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#add-item-modal">ADD Item</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Second Column -->
+            <div class="col-md-4">
+                <!-- Order Details -->
+                <div class="card mb-3">
+                    <div class="card-header">Order Details</div>
+                    <div class="card-body">
+                        <div class="Mrow">
+                            <div class="mb-3">
+                                <label for="orderID" class="form-label">Order ID</label>
+                                <input type="text" class="form-control" id="orderID" placeholder="Order ID">
+                                <div id="error-orderID" style="color: red"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="date" class="form-label">Date</label>
+                                <input type="date" class="form-control" id="date" placeholder="Date">
+                                <div id="error-date" style="color: red"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Amount Section -->
+                <div class="card mb-3">
+                    <div class="card-header">Amount Details</div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <h2>Total : </h2>
+                            <h2></h2>
+                        </div>
+                        <div class="mb-3">
+                            <h2>Sub Total : </h2>
+                            <h2></h2>
+                        </div>
 
-        <div id="ItemDetails"  class="card searchCustomerCard">
-          <div class="header" id="ItemDetailCard">
-            Item Details
-          </div>
-          <div class="card-body itemDetailsInputs">
-            <div id="searchItemId">
-              <label for="itemID" class="form-label">Item Code</label>
-              <select class="form-select form-select-sm" id="itemID" aria-label="Small select example">
-                <option selected>Item IDs</option>
-                <option value="1">I001</option>
-                <option value="2">I002</option>
-                <option value="3">I003</option>
-              </select>
+                        <div class="Mrow">
+                        <div class="mb-3">
+                            <label for="cash" class="form-label">Cash</label>
+                            <input type="text" class="form-control" id="cash" placeholder="Cash Amount">
+                            <div id="error-cash" style="color: red"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="discount" class="form-label">Discount %</label>
+                            <input type="number" class="form-control" id="discount" placeholder="Discount Amount">
+                            <div id="error-discount" style="color: red"></div>
+                        </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="balance" class="form-label">Balance</label>
+                            <input type="text" class="form-control" id="balance" placeholder="Balance">
+                            <div id="error-balance" style="color: red"></div>
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#place-order-modal">Place Order</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-              <label for="itemCode" class="form-label">Item Code</label>
-              <input type="text" class="form-control" id="itemCode" placeholder="Item Code">
+            <!-- Third Column -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Qty</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+<!--                            <tr>-->
+<!--                                <th scope="row">1</th>-->
+<!--                                <td>Mark</td>-->
+<!--                                <td>Otto</td>-->
+<!--                                <td>@mdo</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <th scope="row">2</th>-->
+<!--                                <td>Jacob</td>-->
+<!--                                <td>Thornton</td>-->
+<!--                                <td>@fat</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <th scope="row">3</th>-->
+<!--                                <td>Larry</td>-->
+<!--                                <td>the Bird</td>-->
+<!--                                <td>@twitter</td>-->
+<!--                            </tr>-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-              <label for="itemName" class="form-label">Item Name</label>
-              <input type="text" class="form-control" id="itemName" placeholder="Item Name">
-            </div>
-            <div class="mb-3">
-              <label for="itemPrice" class="form-label">Price</label>
-              <input type="text" class="form-control" id="itemPrice" placeholder="Item Unit Price">
-            </div>
-            <div class="mb-3">
-              <label for="itemQty" class="form-label">Qty</label>
-              <input type="text" class="form-control" id="itemQty" placeholder="Item Qty On Hand">
-            </div>
-            <div class="mb-3">
-              <label for="orderQty" class="form-label">Order Quantity</label>
-              <input type="text" class="form-control" id="orderQty" placeholder="Order Quantity">
-            </div>
-            <div class="mb-3">
-              <button type="button" class="btn btn-danger" data-bs-toggle="modal"  data-bs-target="#add-item-modal">ADD Item</button>
-            </div>
-          </div>
         </div>
-
-      </div>
-
-
-      <div  class="col col-lg-4 col-md-12 col-sm-12 col-12">
-        <div class="card searchCustomerCard">
-
-          <div class="card-body">
-            <div id="totalPriceDiv">
-              <h2>Total : </h2>
-              <h2></h2>
-            </div>
-            <div id="subTotalPriceDiv">
-              <h2>Sub Total : </h2>
-              <h2></h2>
-            </div>
-            <div class="mb-3">
-              <label for="cash" class="form-label">Cash</label>
-              <input type="text" class="form-control" id="cash" placeholder="Cash Amount">
-            </div>
-            <div class="mb-3">
-              <label for="discount" class="form-label">Discount %</label>
-              <input type="number" class="form-control" id="discount" placeholder="Discount Amount">
-            </div>
-            <div class="mb-3">
-              <label for="balance" class="form-label">Balance</label>
-              <input type="text" class="form-control" id="balance" placeholder="Balance">
-            </div>
-            <div class="mb-3">
-              <button type="button" class="btn btn-success" data-bs-toggle="modal"  data-bs-target="#place-order-modal">Place Order</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-    </div><!--//row eke-->
-  </div><!--//container-->
-
-
-  <div  class="Container" class="order_container">
-    <div class="row">
-      <div class="col col-lg-11 col-md-12 col-sm-12 col-12">
-        <div class="card">
-          <div class="card-body">
-            <table class="table">
-              <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Handle</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-  </div>
 </section>
 
 </body>
