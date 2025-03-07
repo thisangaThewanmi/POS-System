@@ -7,7 +7,7 @@ import {orderDetailsModel} from "../Model/orderDetailsModel.js";
 
 
 autoGenerateOrderId("");
-console.log("orderIdcalled");
+
 
 
 function autoGenerateOrderId(orderId) {
@@ -30,8 +30,6 @@ function autoGenerateOrderId(orderId) {
 
 }
 
-/*------------------------------------------*/
-
 
 
 
@@ -39,7 +37,7 @@ function loadComboBoxes(array, comboBoxId) {
     console.log("combo-box loaded", array, comboBoxId);
     var comboBox = $(comboBoxId); //uda ena comboxId eka tama meken ganne
 
-    // clearing the combo 2
+    // clearing the combobox
     comboBox.empty();
 
     //udata ena arrya ek aganata iterate krnoo
@@ -58,54 +56,55 @@ function loadComboBoxes(array, comboBoxId) {
     }
 }
 
+
+
+
 $('#placeOrder-link').click(function () {  //place order link eka ebuwama witharak meka load wenna ona e nisaii header link ekata id dunne ntm mulinma load unoth arraya nisa data na
     console.log("main method");
 
-    loadComboBoxes(customers, '#orderCusId'); // meken method ekata array ekai cmb id ekai yawanoo
-    loadComboBoxes(items, '#O-itemID');
+    loadComboBoxes(customers, '#order-cus-id'); // meken method ekata array ekai cmb id ekai yawanoo
+    loadComboBoxes(items, '#order-item-id');
 
     if( orderDetails===0){
-       var GenertedOID = autoGenerateOrderId("");
-        console.log("cllunaid generator eka");
-
+      autoGenerateOrderId("");
     }
 
 });
+
+
 
 function loadCusData(cusId) {
     console.log("loaded the loadCusData");
     for (var i = 0; i < customers.length; i++) {
         if (cusId === customers[i].id) {
             console.log("cusName", customers[i].Name);
-            $('#orderCusName').val(customers[i].Name);
-            $('#orderCusAddress').val(customers[i].address);
-            $('#orderCusContact').val(customers[i].contactNo);
+            $('#order-cus-name').val(customers[i].Name);
         }
     }
 }
 
-$('#orderCusId').change(function () {
+$('#order-cus-id').change(function () {
     console.log("clicke cmb");
     var cusId = $(this).val();
     console.log("cusId:", cusId);
     loadCusData(cusId);
 });
 
-/*=======================LOAD ITEM DATA=========================*/
+/!*=======================LOAD ITEM DATA=========================*!/
 
 function loadItemData(itemId) {
     console.log("loaded the loadItemData");
     for (var i = 0; i < items.length; i++) {
         if (itemId === items[i].id) {
             console.log("itemName", items[i].Name);
-            $('#O-itemName').val(items[i].Name);
-            $('#O-itemPrice').val(items[i].price);
-            $('#O-itemQty').val(items[i].qty);
+            $('#order-item-name').val(items[i].Name);
+            $('#order-item-price').val(items[i].price);
+            $('#order-item-qty').val(items[i].qty);
         }
     }
 }
 
-$('#O-itemID').change(function () {
+$('#order-item-id').change(function () {
     console.log("clicked item combo");
     var itemId = $(this).val();
     console.log("itemId:", itemId);
@@ -113,7 +112,8 @@ $('#O-itemID').change(function () {
 });
 
 
-/*===================================Load to the table====================*/
+
+/!*===================================Load to the table====================*!/
 function loadTable() {
     $('#item-cart-tablebody').empty();
 
@@ -139,13 +139,13 @@ function loadTable() {
 
 function updateItemQty() {
 
-    var OrderItemId = $('#O-itemID').val();
+    var OrderItemId = $('#order-item-id').val();
 
     for (var i = 0; i < items.length; i++) {
         if (OrderItemId === items[i].id) {
             var currentItemQty = items[i].qty;
             console.log("currentItemQty : "+currentItemQty);
-            var OrderQty = parseInt($('#O-orderQty').val());
+            var OrderQty = parseInt($('#order-item-oqty').val());
             console.log("currentOrderQty : "+OrderQty);
             var updatedQty = currentItemQty - OrderQty;
             console.log("updateQty : "+updatedQty);
@@ -158,20 +158,22 @@ function updateItemQty() {
 }
 
 
-/*==============================save to the cart=======================*/
+
+
+/!*==============================save to the cart=======================*!/
 var total =0;
 var finalTotal=0;
-$("#btnAddItem").on('click', () => {
-    var OrderItemId = $('#O-itemID').val();
-    var OrderItemName = $('#O-itemName').val();
+$("#order-addItem").on('click', () => {
+    var OrderItemId = $('#order-item-id').val();
+    var OrderItemName = $('#order-item-name').val();
 
     // Strip non-numeric characters from price
-    var OrderItemPriceString = $('#O-itemPrice').val();
+    var OrderItemPriceString = $('#order-item-price').val();
     var OrderItemPrice = parseFloat(OrderItemPriceString.replace(/[^0-9.]/g, ''));
     console.log(OrderItemPrice+"OrderItemPrice");
 
     // Parse quantity as integer
-    var OrderQtyString = $('#O-orderQty').val();
+    var OrderQtyString = $('#order-item-oqty').val();
     var OrderQty = parseInt(OrderQtyString);
     console.log(OrderQty+"orderQty");
 
@@ -200,15 +202,16 @@ $("#btnAddItem").on('click', () => {
     // Push the object to the itemCart array
     itemCart.push(cartItem);
 
-    /*updateItemQty(OrderItemId, OrderQty);*/
+
 
     console.log(itemCart);
     loadTable();
 
-    $('#O-itemID').val('');
-    $('#O-itemName').val('');
-    $('#O-itemPrice').val('');
-    $('#O-orderQty').val('');
+    $('#order-item-id').val('');
+    $('#order-item-name').val('');
+    $('#order-item-price').val('');
+    $('#order-item-oqty').val('');
+    $('#order-item-qty').val('');
 
 
 
@@ -232,21 +235,21 @@ $("#btnAddItem").on('click', () => {
     });
 });
 
-/*================================================placing an order==================================*/
+/!*================================================placing an order==================================*!/
 
 $('#btnPlaceOrder').on('click', () => {
 
 
     var OrderId = $('#orderID').val();
     var OrderDate = $('#orderDate').val();
-    var CustomerId = $('#orderCusId').val();
-    var CustomerName = $('#orderCusName').val();
+    var CustomerId = $('#order-cus-id').val();
+    var CustomerName = $('#order-cus-name').val();
     var total=$('#totalPriceLabel').text();
 
 
 
 
-  /*  var discount=$('#discount').val();*/
+    // var discount=$('#discount').val();
 
     var discount = parseFloat($('#discount').val()); // meken eka parse krla ganno
     if (isNaN(discount) || discount < 0) { // mekedi balnoo meka not a numberda ntm 0 wlta wada aduda kila ehenm ekata 0 assign karanoo
@@ -265,43 +268,28 @@ $('#btnPlaceOrder').on('click', () => {
     console.log(discount);
     console.log(subTotal);
 
-    let orderValues = [OrderId,OrderDate,CustomerId,CustomerName,total,discount,subTotal]
-    orderDetails.push(orderValues);
-
-    console.log(orderDetails);
-
-
-
-    loadODTable();
-
-
-    $('#totalPriceLabel').val('');
+    $('#totalPriceLabel').text('');
     $('#discount').val('');
-    $('#subTotalPriceLabel').val('');
+    $('#subTotalPriceLabel').text('');
 
 
     $('#orderID').val('');
     $('#orderDate').val('');
-    $('#orderCusId').val('');
-    $('#orderCusName').val('');
-    $('#orderCusAddress').val('');
-    $('#orderCusContact').val('');
+    $('#order-cus-id').val('');
+    $('#order-cus-name').val('');
 
     autoGenerateOrderId(OrderId);
 
 
 
 
-    /*let orderDetailRec = new orderDetailsModel(OrderId,OrderDate,CustomerId,CustomerName,total,discount,subTotal);
+    let orderDetailRec = new orderDetailsModel(OrderId,OrderDate,CustomerId,CustomerName,total,discount,subTotal);
     console.log("orderDetail11 :"+ orderDetailRec);
-
-
-
     orderDetails.push(orderDetailRec);
-    console.log("orderDetaisl :"+ orderDetails);*/
 
 
-  //  loadODTable();
+
+   loadODTable();
 
 
 });
@@ -319,22 +307,27 @@ $('#orderDetail-link').click(function () {  //place order link eka ebuwama witha
 
 
 
-/*function loadODTable() {
+function loadODTable() {
+    console.log("order details:"+orderDetails.length)
     // Clear existing rows in the table body
     $('#orderDetails-tablebody').empty();
 
     // Iterate through each order detail in orderDetails array
-    orderDetails.forEach((orderDetail) => {
+    orderDetails.forEach((orderDetail,index) => {
         // Construct HTML for a new table row using template literals
         var record = `
             <tr>
-                <td class="cartOrderId">${orderDetail[0]}</td>
-                <td class="cartOrderDate">${orderDetail[1]}</td>
-                <td class="cartCusId">${orderDetail[2]}</td>
-                <td class="cartCusName">${orderDetail[3]}</td>
-                <td class="cartTotal">${orderDetail[4]}</td>
-                <td class="cartDiscount">${orderDetail[5]}</td>
-                <td class="cartFinalTotal">${orderDetail[6]}</td>
+                <td class="cartOrderId">${orderDetail._orderId}</td>
+                <td class="cartOrderDate">${orderDetail._orderDate}</td>
+                <td class="cartCusName">${orderDetail._customerName}</td>
+                <td class="cartTotal">${orderDetail._total}</td>
+                <td class="cartDiscount">${orderDetail._discount}</td>
+                <td class="cartFinalTotal">${orderDetail._SubTotal}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm btn-delete" data-index="${index}">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </td>
             </tr>
         `;
 
@@ -342,57 +335,23 @@ $('#orderDetail-link').click(function () {  //place order link eka ebuwama witha
         $("#orderDetails-tablebody").append(record);
 
     });
-}*/
 
 
-
-
-function loadODTable() {
-    // Select the table body where rows will be appended
-    var tableBody = $('#orderDetail-tablebody');
-
-    // Clear existing rows if any
-    tableBody.empty();
-
-    // Iterate through each order in orderDetails array
-    orderDetails.forEach(function(order) {
-        // Create a new row element
-        var row = $('<tr>');
-
-        // Append columns (cells) to the row
-        $('<td>').text(order[0]).appendTo(row); // OrderId
-        $('<td>').text(order[2]).appendTo(row); // CustomerId
-        $('<td>').text(order[3]).appendTo(row); // CustomerName
-        $('<td>').text(order[4]).appendTo(row); // Total
-        $('<td>').text(order[5]).appendTo(row); // Discount
-        $('<td>').text(order[6]).appendTo(row); // SubTotal
-
-        // Append the row to the table body
-        tableBody.append(row);
-    });
-} /* mekath hari but terum ganna amaruiii*/
-
-
-/*===============================================Generating OrderId============================*/
-
-
-
-
-
-/*
-var orderIdCounter = 0; // Counter for generating sequential order IDs
-
-function autoGenerateOrderId() {
-   orderIdCounter= orderIdCounter++;
-    if (orderIdCounter < 10) {
-        return "O00" + orderIdCounter;
-    } else if (orderIdCounter < 100) {
-        return "O0" + orderIdCounter;
-    } else {
-        return "O" + orderIdCounter;
-    }
 }
-*/
+function deleteOrder(index) {
+    console.log("delete order btn triggered");
+    orderDetails.splice(index, 1); // Remove the order from the array
+    loadODTable(); // Reload the table to reflect the changes
+}
+
+// Attach event listener for delete buttons using event delegation
+$(document).on('click', '.btn-delete', function() {
+    var index = $(this).data('index'); // Get the index from the data attribute
+    deleteOrder(index);
+});
+
+
+
 
 
 
