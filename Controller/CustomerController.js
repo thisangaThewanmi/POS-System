@@ -68,7 +68,12 @@ $("#Cus-table-body").on('click', 'tr' , function () {
 
             let customer= new CustomerModel(CustomerId,CustomerName,CustomerAddress,CustomerContact);
             customers.push(customer);
-            alert("Customer Saved");
+            Swal.fire({
+                title: "Success?",
+                text: "Customer added to the system?",
+                icon: "success",
+                confirmButtonText:"ok !"
+            })
 
 
             console.log(CustomerId);
@@ -90,35 +95,67 @@ $("#Cus-table-body").on('click', 'tr' , function () {
 /*=====================Update a customer===========================*/
 $("#btnCusUpadate").on('click', () => {
 
-    var CustomerId = $("#cusId").val();
+    Swal.fire({
+        title: "Are you sure?",
+        text: "Do you want to update this customer?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Yes, update it!",
+        cancelButtonText: "No, cancel!"
+    }).then((result) => {
+        if (result.isConfirmed) {
 
-    var CustomerName = $("#cusFullname").val();
+            var CustomerId = $("#cusId").val();
 
-    var CustomerAddress = $("#cusAddress").val();
+            var CustomerName = $("#cusFullname").val();
 
-    var CustomerContact = $("#cusContactNo").val();
+            var CustomerAddress = $("#cusAddress").val();
+
+            var CustomerContact = $("#cusContactNo").val();
 
 
-    let customerObj = customers[recordIndex];
+            let customerObj = customers[recordIndex];
 
-    customerObj.id = CustomerId;
-    customerObj.Name = CustomerName;
-    customerObj.address = CustomerAddress;
-    customerObj.contactNo = CustomerContact;
+            customerObj.id = CustomerId;
+            customerObj.Name = CustomerName;
+            customerObj.address = CustomerAddress;
+            customerObj.contactNo = CustomerContact;
 
-    loadTable();
-    clearData()
-});
+            loadTable();
+            clearData()
+
+            Swal.fire("Updated!", "Customer has been updated.", "success");
+        }
+
+        });
+    });
 
 
 /*========================delete a customer=======================*/
 
 $("#btnCusDelete").on('click', () => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Delete the customer
+            customers.splice(recordIndex, 1);
 
-    customers.splice(recordIndex, 1);
+            // Reload the table
+            loadTable();
 
-    loadTable();
-    clearData()
+            // Clear input fields
+            clearData();
+
+            // Show success message
+            Swal.fire("Deleted!", "Customer has been deleted.", "success");
+        }
+    });
 });
 
 
@@ -241,13 +278,21 @@ function validateAll() {
         var customerData = findCustomerByName(customerName); // Replace with your actual function to fetch data
 
 
-
-        if(customerData){
-            alert("Customer Found :)");
-        }else{
-            alert("CustomerNot Found :(");
+        if (customerData) {
+            Swal.fire({
+                title: "Success!",
+                text: "Customer Found :)",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+        } else {
+            Swal.fire({
+                title: "Error!",
+                text: "Customer Not Found :(",
+                icon: "error",
+                confirmButtonText: "OK"
+            });
         }
-
         $('#CusSearchBar').val('');
 
     });
