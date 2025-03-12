@@ -30,7 +30,8 @@ export class CustomerModel {
     set contactNo(value) {
         this._contactNo = value;
     }
-    constructor(id,Name,address,contactNo) {
+
+    constructor(id, Name, address, contactNo) {
         this._id = id;
         this._Name = Name;
         this._address = address;

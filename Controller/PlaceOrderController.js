@@ -9,19 +9,18 @@ import {orderDetailsModel} from "../Model/orderDetailsModel.js";
 autoGenerateOrderId("");
 
 
-
 function autoGenerateOrderId(orderId) {
 
     console.log("currentOrderId: " + orderId);
 
-    if(orderId !== "") {
+    if (orderId !== "") {
         var split = [];
         split = orderId.split("O0");
         var id = Number.parseInt(split[1]);
         id++;
-        if(id < 10) {
+        if (id < 10) {
             $("#orderID").val("O00" + id);
-        }else{
+        } else {
             $("#orderID").val("O0" + id);
         }
     } else {
@@ -29,8 +28,6 @@ function autoGenerateOrderId(orderId) {
     }
 
 }
-
-
 
 
 function loadComboBoxes(array, comboBoxId) {
@@ -50,13 +47,11 @@ function loadComboBoxes(array, comboBoxId) {
 
     // If there's only one item, manually trigger change event
     if (array.length === 1) {
-        comboBox.one('click', function() {
+        comboBox.one('click', function () {
             $(this).change();
         });
     }
 }
-
-
 
 
 $('#placeOrder-link').click(function () {  //place order link eka ebuwama witharak meka load wenna ona e nisaii header link ekata id dunne ntm mulinma load unoth arraya nisa data na
@@ -65,12 +60,11 @@ $('#placeOrder-link').click(function () {  //place order link eka ebuwama withar
     loadComboBoxes(customers, '#order-cus-id'); // meken method ekata array ekai cmb id ekai yawanoo
     loadComboBoxes(items, '#order-item-id');
 
-    if( orderDetails===0){
-      autoGenerateOrderId("");
+    if (orderDetails === 0) {
+        autoGenerateOrderId("");
     }
 
 });
-
 
 
 function loadCusData(cusId) {
@@ -112,12 +106,12 @@ $('#order-item-id').change(function () {
 });
 
 
-
 /!*===================================Load to the table====================*!/
+
 function loadTable() {
     $('#item-cart-tablebody').empty();
 
-   itemCart.map((itemCart, index) => {
+    itemCart.map((itemCart, index) => {
         var record = `
             <tr>
                 <td class="cartItemId">${itemCart.itemId}</td>
@@ -132,11 +126,6 @@ function loadTable() {
 }
 
 
-
-
-
-
-
 function updateItemQty() {
 
     var OrderItemId = $('#order-item-id').val();
@@ -144,25 +133,23 @@ function updateItemQty() {
     for (var i = 0; i < items.length; i++) {
         if (OrderItemId === items[i].id) {
             var currentItemQty = items[i].qty;
-            console.log("currentItemQty : "+currentItemQty);
+            console.log("currentItemQty : " + currentItemQty);
             var OrderQty = parseInt($('#order-item-oqty').val());
-            console.log("currentOrderQty : "+OrderQty);
+            console.log("currentOrderQty : " + OrderQty);
             var updatedQty = currentItemQty - OrderQty;
-            console.log("updateQty : "+updatedQty);
+            console.log("updateQty : " + updatedQty);
 
             items[i].qty = updatedQty;
-            console.log(" items[i].qty"+ items[i].qty);
+            console.log(" items[i].qty" + items[i].qty);
         }
 
     }
 }
 
 
-
-
 /!*==============================save to the cart=======================*!/
-var total =0;
-var finalTotal=0;
+var total = 0;
+var finalTotal = 0;
 $("#order-addItem").on('click', () => {
     var OrderItemId = $('#order-item-id').val();
     var OrderItemName = $('#order-item-name').val();
@@ -170,12 +157,12 @@ $("#order-addItem").on('click', () => {
     // Strip non-numeric characters from price
     var OrderItemPriceString = $('#order-item-price').val();
     var OrderItemPrice = parseFloat(OrderItemPriceString.replace(/[^0-9.]/g, ''));
-    console.log(OrderItemPrice+"OrderItemPrice");
+    console.log(OrderItemPrice + "OrderItemPrice");
 
     // Parse quantity as integer
     var OrderQtyString = $('#order-item-oqty').val();
     var OrderQty = parseInt(OrderQtyString);
-    console.log(OrderQty+"orderQty");
+    console.log(OrderQty + "orderQty");
 
     if (isNaN(OrderItemPrice) || isNaN(OrderQty)) {
         alert("Please enter valid numbers for price and quantity.");
@@ -186,7 +173,7 @@ $("#order-addItem").on('click', () => {
     updateItemQty();
 
 
-     total = OrderQty * OrderItemPrice;
+    total = OrderQty * OrderItemPrice;
     console.log("total: " + total);
 
     finalTotal += total; // Incrementally add to final total
@@ -195,13 +182,12 @@ $("#order-addItem").on('click', () => {
     $('#totalPriceLabel').text(finalTotal);
 
     // Create an object to store item data
-    let cartItem = new ItemCartModel(OrderItemId, OrderItemName,  OrderQty, OrderItemPrice,total);
+    let cartItem = new ItemCartModel(OrderItemId, OrderItemName, OrderQty, OrderItemPrice, total);
     console.log("Before sending to the table");
 
 
     // Push the object to the itemCart array
     itemCart.push(cartItem);
-
 
 
     console.log(itemCart);
@@ -212,8 +198,6 @@ $("#order-addItem").on('click', () => {
     $('#order-item-price').val('');
     $('#order-item-oqty').val('');
     $('#order-item-qty').val('');
-
-
 
 
     $("#discount, #cash").on('input', () => { // listeners danoo
@@ -241,12 +225,10 @@ $('#btnPlaceOrder').on('click', () => {
 
 
     var OrderId = $('#orderID').val();
-    var OrderDate = $('#orderDate').val();
+    var OrderDate = $('#date').val();
     var CustomerId = $('#order-cus-id').val();
     var CustomerName = $('#order-cus-name').val();
-    var total=$('#totalPriceLabel').text();
-
-
+    var total = $('#totalPriceLabel').text();
 
 
     // var discount=$('#discount').val();
@@ -257,7 +239,7 @@ $('#btnPlaceOrder').on('click', () => {
     }
 
 
-    var subTotal=$('#subTotalPriceLabel').text();
+    var subTotal = $('#subTotalPriceLabel').text();
 
 
     console.log(OrderId);
@@ -281,9 +263,8 @@ $('#btnPlaceOrder').on('click', () => {
     autoGenerateOrderId(OrderId);
 
 
-
-
-    let orderDetailRec = new orderDetailsModel(OrderId,OrderDate,CustomerId,CustomerName,total,discount,subTotal);
+    let orderDetailRec = new orderDetailsModel(OrderId, OrderDate, CustomerId, CustomerName, total, discount, subTotal);
+    orderDetails.push(orderDetailRec)
 
     if (orderDetailRec) {
         Swal.fire({
@@ -302,15 +283,10 @@ $('#btnPlaceOrder').on('click', () => {
     }
 
 
-
-
-
-
     loadODTable();
 
 
 });
-
 
 
 /*==========================loading order Detail Table=================================*/
@@ -323,14 +299,13 @@ $('#orderDetail-link').click(function () {  //place order link eka ebuwama witha
 });
 
 
-
 function loadODTable() {
-    console.log("order details:"+orderDetails.length)
+    console.log("order details:" + orderDetails.length)
     // Clear existing rows in the table body
     $('#orderDetails-tablebody').empty();
 
     // Iterate through each order detail in orderDetails array
-    orderDetails.forEach((orderDetail,index) => {
+    orderDetails.forEach((orderDetail, index) => {
         // Construct HTML for a new table row using template literals
         var record = `
             <tr>
@@ -355,6 +330,7 @@ function loadODTable() {
 
 
 }
+
 function deleteOrder(index) {
     Swal.fire({
         title: "Are you sure?",
@@ -371,8 +347,9 @@ function deleteOrder(index) {
         }
     });
 }
+
 // Attach event listener for delete buttons using event delegation
-$(document).on('click', '.btn-delete', function() {
+$(document).on('click', '.btn-delete', function () {
     var index = $(this).data('index'); // Get the index from the data attribute
     deleteOrder(index);
 });

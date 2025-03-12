@@ -22,12 +22,12 @@ function loadTable() {
 
 /*=======================get data from the current index=====================*/
 
-$("#item-table-body").on('click', 'tr' , function () {
+$("#item-table-body").on('click', 'tr', function () {
 
     let index = $(this).index();
     recordIndex = index;
 
-    console.log("index: ",index);
+    console.log("index: ", index);
 
     let Id = $(this).find(".item-id-value").text();
     let Name = $(this).find(".item-name-value").text();
@@ -41,10 +41,7 @@ $("#item-table-body").on('click', 'tr' , function () {
     $("#ItemPrice").val(Price);
 
 
-
 });
-
-
 
 
 /*============save an Item============================*/
@@ -52,7 +49,7 @@ $("#btnItemSave").on('click', () => {
 
     console.log("start button triggerd IN iTEMS");
 
-    if (validateAll()){
+    if (validateAll()) {
         var itemId = $("#ItemId").val();
 
         var itemName = $("#ItemName").val();
@@ -62,14 +59,14 @@ $("#btnItemSave").on('click', () => {
         var itemPrice = $("#ItemPrice").val();
 
 
-        let item= new ItemModel(itemId,itemName,itemQty,itemPrice);
+        let item = new ItemModel(itemId, itemName, itemQty, itemPrice);
         items.push(item);
 
         Swal.fire({
             title: "Success?",
             text: "Item added to the system?",
             icon: "success",
-            confirmButtonText:"ok !"
+            confirmButtonText: "ok !"
         })
 
         console.log(items);
@@ -97,26 +94,26 @@ $("#btnItemUpdate").on('click', () => {
     }).then((result) => {
         if (result.isConfirmed) {
 
-        var itemId = $("#ItemId").val();
+            var itemId = $("#ItemId").val();
 
-        var itemName = $("#ItemName").val();
+            var itemName = $("#ItemName").val();
 
-        var itemQty = $("#ItemQty").val();
+            var itemQty = $("#ItemQty").val();
 
-        var itemPrice = $("#ItemPrice").val();
+            var itemPrice = $("#ItemPrice").val();
 
 
-        let itemObj = items[recordIndex];
+            let itemObj = items[recordIndex];
 
-        itemObj.id = itemId;
-        itemObj.Name = itemName;
-        itemObj.qty = itemQty;
-        itemObj.price = itemPrice;
+            itemObj.id = itemId;
+            itemObj.Name = itemName;
+            itemObj.qty = itemQty;
+            itemObj.price = itemPrice;
 
-        loadTable();
-        $("#btnItemClear").click();
+            loadTable();
+            $("#btnItemClear").click();
 
-        Swal.fire("Updated!", "Item has been updated.", "success");
+            Swal.fire("Updated!", "Item has been updated.", "success");
         }
 
     });
@@ -136,10 +133,10 @@ $("#btnItemDelete").on('click', () => {
     }).then((result) => {
         if (result.isConfirmed) {
 
-    items.splice(recordIndex, 1);
+            items.splice(recordIndex, 1);
 
-    loadTable();
-    $("#btnItemClear").click();
+            loadTable();
+            $("#btnItemClear").click();
             // Show success message
             Swal.fire("Deleted!", "Item has been deleted.", "success");
         }
@@ -153,12 +150,10 @@ function validateItemId() {
     var ItemId = $('#ItemId').val();
     let pattern = /^I\d{3}$/;
 
-       if (pattern.test(ItemId)) {
+    if (pattern.test(ItemId)) {
         $('#error-ItemId').html("");
         return true;
-       }
-
-       else {
+    } else {
         $('#error-ItemId').html("Please enter in the I-*** format  ");
         return false;
     }
@@ -173,9 +168,7 @@ function validateItemName() {
     if (pattern.test(ItemName)) {
         $('#error-ItemName').html("");
         return true;
-    }
-
-    else {
+    } else {
         $('#error-ItemName').html("Please enter a valid Name  ");
         return false;
     }
@@ -191,9 +184,7 @@ function validateItemQty() {
     if (pattern.test(Itemqty)) {
         $('#error-ItemQty').html("");
         return true;
-    }
-
-    else {
+    } else {
         $('#error-ItemQty').html("Please enter a valid quantity ");
         return false;
     }
@@ -210,18 +201,16 @@ function validateItemPrice() {
     if (pattern.test(ItemPrice)) {
         $('#error-ItemPrice').html("");
         return true;
-    }
-
-    else {
+    } else {
         $('#error-ItemPrice').html("Please enter in the format Rs.****");
         return false;
     }
 }
 
-$('#ItemId').on('input',validateItemId);
-$('#ItemName').on('input',validateItemName);
-$('#ItemQty').on('input',validateItemQty);
-$('#ItemPrice').on('input',validateItemPrice);
+$('#ItemId').on('input', validateItemId);
+$('#ItemName').on('input', validateItemName);
+$('#ItemQty').on('input', validateItemQty);
+$('#ItemPrice').on('input', validateItemPrice);
 
 
 function validateAll() {
@@ -243,14 +232,14 @@ function validateAll() {
 
 /*=================  GET COUNT =========================*/
 
-function getCount(){
+function getCount() {
     $('#item-count').text(items.length);
 }
 
 
 /*===============  Item search   =========================*/
 
-$('#searchItemButton').on('click', function() {
+$('#searchItemButton').on('click', function () {
     var ItemName = $('#ItemSearchBar').val().trim(); // Get customer name from input
 
     // Perform a check to ensure customerName is not empty

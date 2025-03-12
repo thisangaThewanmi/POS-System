@@ -1,6 +1,6 @@
 export class orderDetailsModel {
 
-    constructor(orderId,orderDate,customerId,customerName,total,discount,SubTotal) {
+    constructor(orderId, orderDate, customerId, customerName, total, discount, SubTotal) {
 
         this._orderId = orderId;
         this._orderDate = orderDate;

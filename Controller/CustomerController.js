@@ -1,9 +1,7 @@
 import {CustomerModel} from "../Model/CustomerModel.js";
-import{customers} from "../db/db.js";
+import {customers} from "../db/db.js";
 
 var recordIndex;
-
-
 
 
 function loadTable() {
@@ -25,12 +23,12 @@ function loadTable() {
 
 /*=======================get data from the current index=====================*/
 
-$("#Cus-table-body").on('click', 'tr' , function () {
+$("#Cus-table-body").on('click', 'tr', function () {
 
     let index = $(this).index();
     recordIndex = index;
 
-    console.log("index: ",index);
+    console.log("index: ", index);
 
     let Id = $(this).find(".cus-id-value").text();
     let Name = $(this).find(".cus-name-value").text();
@@ -44,52 +42,49 @@ $("#Cus-table-body").on('click', 'tr' , function () {
     $("#cusContactNo").val(ContactNo);
 
 
-
 });
-
-
 
 
 /*============save a customer============================*/
 
 
-    $("#btnCusSave").on('click', () => {
-        console.log("start button triggered");
+$("#btnCusSave").on('click', () => {
+    console.log("start button triggered");
 
-        if (validateAll()) {
-            var CustomerId = $("#cusId").val();
+    if (validateAll()) {
+        var CustomerId = $("#cusId").val();
 
-            var CustomerName = $("#cusFullname").val();
+        var CustomerName = $("#cusFullname").val();
 
-            var CustomerAddress = $("#cusAddress").val();
+        var CustomerAddress = $("#cusAddress").val();
 
-            var CustomerContact = $("#cusContactNo").val();
-
-
-            let customer= new CustomerModel(CustomerId,CustomerName,CustomerAddress,CustomerContact);
-            customers.push(customer);
-            Swal.fire({
-                title: "Success?",
-                text: "Customer added to the system?",
-                icon: "success",
-                confirmButtonText:"ok !"
-            })
+        var CustomerContact = $("#cusContactNo").val();
 
 
-            console.log(CustomerId);
-            console.log(CustomerName);
-            console.log(CustomerAddress);
-            console.log(CustomerContact);
-
-            console.log(customers);
-
-            loadTable();
-            clearData();
-            getCount();
+        let customer = new CustomerModel(CustomerId, CustomerName, CustomerAddress, CustomerContact);
+        customers.push(customer);
+        Swal.fire({
+            title: "Success?",
+            text: "Customer added to the system?",
+            icon: "success",
+            confirmButtonText: "ok !"
+        })
 
 
-        }
-    });
+        console.log(CustomerId);
+        console.log(CustomerName);
+        console.log(CustomerAddress);
+        console.log(CustomerContact);
+
+        console.log(customers);
+
+        loadTable();
+        clearData();
+        getCount();
+
+
+    }
+});
 
 
 /*=====================Update a customer===========================*/
@@ -127,8 +122,8 @@ $("#btnCusUpadate").on('click', () => {
             Swal.fire("Updated!", "Customer has been updated.", "success");
         }
 
-        });
     });
+});
 
 
 /*========================delete a customer=======================*/
@@ -159,9 +154,7 @@ $("#btnCusDelete").on('click', () => {
 });
 
 
-
-
-function  validateCusId(){
+function validateCusId() {
     // console.log("validate method called");
 
     var CustomerId = $("#cusId").val();
@@ -169,7 +162,7 @@ function  validateCusId(){
 
 
     if (pattern.test(CustomerId)) {
-        $('#error-msgId').html("") ;
+        $('#error-msgId').html("");
         return true;
     } else {
         $('#error-msgId').html("Please enter the id in C-*** format");
@@ -177,7 +170,7 @@ function  validateCusId(){
     }
 }
 
-function  validateCusName(){
+function validateCusName() {
     console.log("validate method called for Name");
 
     var CustomerName = $("#cusFullname").val();
@@ -185,7 +178,7 @@ function  validateCusName(){
 
 
     if (pattern.test(CustomerName)) {
-        $('#error-msgName').html("") ;
+        $('#error-msgName').html("");
         return true;
     } else {
         $('#error-msgName').html("Please enter a valid name");
@@ -194,15 +187,16 @@ function  validateCusName(){
     }
 }
 
-function  validateCusAddress(){
+function validateCusAddress() {
     console.log("validate method called for Name");
 
     var CustomerAddress = $("#cusAddress").val();
-    let pattern =  /^[a-zA-Z0-9\s,.'-]{3,}$/;;
+    let pattern = /^[a-zA-Z0-9\s,.'-]{3,}$/;
+    ;
 
 
     if (pattern.test(CustomerAddress)) {
-        $('#error-msgAddress').html("") ;
+        $('#error-msgAddress').html("");
         return true;
     } else {
         $('#error-msgAddress').html("Please enter a valid address");
@@ -212,16 +206,15 @@ function  validateCusAddress(){
 }
 
 
-function  validateCusContact(){
+function validateCusContact() {
     // console.log("validate method called for Contact");
 
     var CustomerContact = $("#cusContactNo").val();
     let pattern = /^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$/;
 
 
-
     if (pattern.test(CustomerContact)) {
-        $('#error-msgContact').html("") ;
+        $('#error-msgContact').html("");
         return true;
     } else {
         $('#error-msgContact').html("Please enter a valid address");
@@ -231,13 +224,10 @@ function  validateCusContact(){
 }
 
 
-
-
 $("#cusId").on('input', validateCusId);
 $("#cusFullname").on('input', validateCusName);
 $("#cusAddress").on('input', validateCusAddress);
 $("#cusContactNo").on('input', validateCusContact);
-
 
 
 function validateAll() {
@@ -258,78 +248,77 @@ function validateAll() {
 }
 
 
-
 /*================================================Cus Search====================================*/
 
 
 // Function to simulate fetching customer data (replace with your actual backend call)
 
-    // Function to handle customer search
-    $('#searchCusButton').on('click', function() {
-        var customerName = $('#CusSearchBar').val().trim(); // Get customer name from input
+// Function to handle customer search
+$('#searchCusButton').on('click', function () {
+    var customerName = $('#CusSearchBar').val().trim(); // Get customer name from input
 
-        // Perform a check to ensure customerName is not empty
-        if (customerName === '') {
-            alert('Please enter a customer name.');
-            return;
-        }
-
-
-        var customerData = findCustomerByName(customerName); // Replace with your actual function to fetch data
-
-
-        if (customerData) {
-            Swal.fire({
-                title: "Success!",
-                text: "Customer Found :)",
-                icon: "success",
-                confirmButtonText: "OK"
-            });
-        } else {
-            Swal.fire({
-                title: "Error!",
-                text: "Customer Not Found :(",
-                icon: "error",
-                confirmButtonText: "OK"
-            });
-        }
-        $('#CusSearchBar').val('');
-
-    });
-
-
-    // Function to simulate fetching customer data (replace with your actual backend call)
-    function findCustomerByName(name) {
-
-        for (var i = 0; i < customers.length; i++) {
-            if (name === customers[i].Name) {
-                console.log("cusName", customers[i].Name);
-                $('#cusId').val(customers[i].id);
-                $('#cusFullname').val(customers[i].Name);
-                $('#cusAddress').val(customers[i].address);
-                $('#cusContactNo').val(customers[i].contactNo);
-                return true;
-            }
-        }
-
+    // Perform a check to ensure customerName is not empty
+    if (customerName === '') {
+        alert('Please enter a customer name.');
+        return;
     }
+
+
+    var customerData = findCustomerByName(customerName); // Replace with your actual function to fetch data
+
+
+    if (customerData) {
+        Swal.fire({
+            title: "Success!",
+            text: "Customer Found :)",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    } else {
+        Swal.fire({
+            title: "Error!",
+            text: "Customer Not Found :(",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+    }
+    $('#CusSearchBar').val('');
+
+});
+
+
+// Function to simulate fetching customer data (replace with your actual backend call)
+function findCustomerByName(name) {
+
+    for (var i = 0; i < customers.length; i++) {
+        if (name === customers[i].Name) {
+            console.log("cusName", customers[i].Name);
+            $('#cusId').val(customers[i].id);
+            $('#cusFullname').val(customers[i].Name);
+            $('#cusAddress').val(customers[i].address);
+            $('#cusContactNo').val(customers[i].contactNo);
+            return true;
+        }
+    }
+
+}
 
 /* ============================ clear data  ==========================*/
 
- function clearData(){
-     $("#cusId").val("");
+function clearData() {
+    $("#cusId").val("");
 
-      $("#cusFullname").val("");
+    $("#cusFullname").val("");
 
-      $("#cusAddress").val("");
+    $("#cusAddress").val("");
 
-      $("#cusContactNo").val("");
+    $("#cusContactNo").val("");
 
- }
+}
 
- /*=================  GET COUNT =========================*/
+/*=================  GET COUNT =========================*/
 
-function getCount(){
+function getCount() {
     $('#cus-count').text(customers.length);
 }
 

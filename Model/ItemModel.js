@@ -1,4 +1,4 @@
-export class ItemModel{
+export class ItemModel {
     get id() {
         return this._id;
     }
@@ -30,7 +30,8 @@ export class ItemModel{
     set price(value) {
         this._price = value;
     }
-    constructor(id,Name,qty,price) {
+
+    constructor(id, Name, qty, price) {
         this._id = id;
         this._Name = Name;
         this._qty = qty;
