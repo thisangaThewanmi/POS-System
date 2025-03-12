@@ -62,13 +62,15 @@ $("#btnItemSave").on('click', () => {
         var itemPrice = $("#ItemPrice").val();
 
 
-
-
-
-
-
         let item= new ItemModel(itemId,itemName,itemQty,itemPrice);
         items.push(item);
+
+        Swal.fire({
+            title: "Success?",
+            text: "Item added to the system?",
+            icon: "success",
+            confirmButtonText:"ok !"
+        })
 
         console.log(items);
 
@@ -85,38 +87,65 @@ $("#btnItemSave").on('click', () => {
 
 /*=====================Update an Item===========================*/
 $("#btnItemUpdate").on('click', () => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "Do you want to update this item?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Yes, update it!",
+        cancelButtonText: "No, cancel!"
+    }).then((result) => {
+        if (result.isConfirmed) {
 
-    var itemId = $("#ItemId").val();
+        var itemId = $("#ItemId").val();
 
-    var itemName = $("#ItemName").val();
+        var itemName = $("#ItemName").val();
 
-    var itemQty = $("#ItemQty").val();
+        var itemQty = $("#ItemQty").val();
 
-    var itemPrice = $("#ItemPrice").val();
+        var itemPrice = $("#ItemPrice").val();
 
 
-    let itemObj = items[recordIndex];
+        let itemObj = items[recordIndex];
 
-    itemObj.id = itemId;
-    itemObj.Name = itemName;
-    itemObj.qty = itemQty;
-    itemObj.price = itemPrice;
+        itemObj.id = itemId;
+        itemObj.Name = itemName;
+        itemObj.qty = itemQty;
+        itemObj.price = itemPrice;
 
-    loadTable();
-    $("#btnItemClear").click();
+        loadTable();
+        $("#btnItemClear").click();
+
+        Swal.fire("Updated!", "Item has been updated.", "success");
+        }
+
+    });
 });
 
 
 /*========================delete an Item=======================*/
 
 $("#btnItemDelete").on('click', () => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!"
+    }).then((result) => {
+        if (result.isConfirmed) {
 
     items.splice(recordIndex, 1);
-    console.log(items);
 
     loadTable();
     $("#btnItemClear").click();
+            // Show success message
+            Swal.fire("Deleted!", "Item has been deleted.", "success");
+        }
+    });
 });
+
 
 function validateItemId() {
     console.log("method validateItemId called");
@@ -225,21 +254,25 @@ $('#searchItemButton').on('click', function() {
     var ItemName = $('#ItemSearchBar').val().trim(); // Get customer name from input
 
     // Perform a check to ensure customerName is not empty
-    if (ItemName === '') {
-        alert('Please enter a item name.');
-        return;
+    if (ItemName) {
+        Swal.fire({
+            title: "Success!",
+            text: "Item Found :)",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    } else {
+        Swal.fire({
+            title: "Error!",
+            text: "Item Not Found :(",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
     }
 
 
     var itemData = findItemByName(ItemName); // Replace with your actual function to fetch data
 
-
-
-    if(itemData){
-        alert("Item Found :)");
-    }else{
-        alert("Item Not Found :(");
-    }
 
     $('#ItemSearchBar').val('');
 
