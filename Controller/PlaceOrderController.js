@@ -284,12 +284,29 @@ $('#btnPlaceOrder').on('click', () => {
 
 
     let orderDetailRec = new orderDetailsModel(OrderId,OrderDate,CustomerId,CustomerName,total,discount,subTotal);
-    console.log("orderDetail11 :"+ orderDetailRec);
-    orderDetails.push(orderDetailRec);
+
+    if (orderDetailRec) {
+        Swal.fire({
+            title: "Success!",
+            text: "Order placed:)",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    } else {
+        Swal.fire({
+            title: "Error!",
+            text: "Error in placing the order:(",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+    }
 
 
 
-   loadODTable();
+
+
+
+    loadODTable();
 
 
 });
@@ -339,11 +356,21 @@ function loadODTable() {
 
 }
 function deleteOrder(index) {
-    console.log("delete order btn triggered");
-    orderDetails.splice(index, 1); // Remove the order from the array
-    loadODTable(); // Reload the table to reflect the changes
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            orderDetails.splice(index, 1); // Remove the order from the array
+            loadODTable(); // Reload the table
+            Swal.fire("Deleted!", "Your order has been deleted.", "success"); // Success message
+        }
+    });
 }
-
 // Attach event listener for delete buttons using event delegation
 $(document).on('click', '.btn-delete', function() {
     var index = $(this).data('index'); // Get the index from the data attribute
