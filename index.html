@@ -23,6 +23,9 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
+            <span class="nav-link active" aria-current="page" id="dash-link" href="#dashboard">Dashboard</span>
+          </li>
+          <li class="nav-item">
             <span class="nav-link active" aria-current="page" id="cus-link" href="#customer">Customer</span>
           </li>
           <li class="nav-item">
@@ -44,6 +47,59 @@
     </div>
   </nav>
 </header>
+
+
+
+
+<section id="dashboard">
+  <div class="dashContainer order_container">
+    <div class="container">
+      <h1 class="text-center mb-4 fw-bold" style="color: rebeccapurple">Dashboard</h1>
+
+      <!-- Welcome Message -->
+      <div class=" text-center mb-4" style="color: rebeccapurple">
+        <h3>Welcome to Our Software</h3>
+        <p class="text-muted" style="color: #fbf9fd" >"Shopping is an art, and every cart tells a story!"</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Customers Card -->
+        <div class="col-md-4">
+          <div class="dashboard-card">
+            <div class="icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h2 id="customerCount" class="counter">0</h2>
+            <p>Customers</p>
+            <button class="btn btn-outline-primary" onclick="addCustomer()">Add Customer</button>
+          </div>
+        </div>
+        <!-- Items Card -->
+        <div class="col-md-4">
+          <div class="dashboard-card">
+            <div class="icon">
+              <i class="fas fa-box"></i>
+            </div>
+            <h2 id="itemCount" class="counter">0</h2>
+            <p>Items</p>
+            <button class="btn btn-outline-success" onclick="addItem()">Add Item</button>
+          </div>
+        </div>
+        <!-- Orders Card -->
+        <div class="col-md-4">
+          <div class="dashboard-card">
+            <div class="icon">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h2 id="orderCount" class="counter">0</h2>
+            <p>Placed Orders</p>
+            <button class="btn btn-outline-danger" onclick="addOrder()">Add Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 

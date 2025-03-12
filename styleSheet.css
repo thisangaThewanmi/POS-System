@@ -23,6 +23,70 @@
 
 }
 
+.dashContainer{
+        /* background: rgba(19, 18, 18, 0.79);*/
+        width:87%;
+        height: 80vh;
+        /* margin-top:40px;
+         margin-left:20px;*/
+        margin: auto;
+        padding:90px;
+        border-radius: 20px;
+        box-shadow: rgb(193, 57, 203) 0px 5px 15px;
+}
+
+.dashboard-card {
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+    font-size: 3rem;
+    color: rebeccapurple;
+    margin-bottom: 10px;
+}
+
+.counter {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+.btn {
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 8px 20px;
+}
+
+.btn-outline-primary:hover {
+    background-color: rebeccapurple;
+    color: #fff;
+}
+
+.btn-outline-success:hover {
+    background-color: rebeccapurple;
+    color: #fff;
+}
+
+.btn-outline-danger:hover {
+    background-color: rebeccapurple;
+    color: #fff;
+}
+
 #body{
     background: #b9a99c78;
 }

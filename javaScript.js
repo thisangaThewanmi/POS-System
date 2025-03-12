@@ -1,4 +1,5 @@
-$('#customer').css({display:'block'});
+$('#dashboard').css({display:'block'});
+$('#customer').css({display:'none'});
 $('#item').css({display:'none'});
 $('#order').css({display:'none'});
 $('#orderDetail').css({display:'none'});
@@ -8,6 +9,7 @@ $('#orderDetail').css({display:'none'});
 $('#cus-link').on('click',()=>{
     console.log("student click")
 
+    $('#dashboard').css({display:'none'});
     $('#customer').css({display:'block'});
     $('#item').css({display:'none'});
     $('#order').css({display:'none'});
@@ -19,6 +21,7 @@ $('#cus-link').on('click',()=>{
 $('#item-link').on('click',()=>{
     console.log("course click")
 
+    $('#dashboard').css({display:'none'});
     $('#customer').css({display:'none'});
     $('#item').css({display:'block'});
     $('#order').css({display:'none'});
@@ -28,6 +31,7 @@ $('#item-link').on('click',()=>{
 $('#placeOrder-link').on('click',()=>{
     console.log("course click")
 
+    $('#dashboard').css({display:'none'});
     $('#customer').css({display:'none'});
     $('#item').css({display:'none'});
     $('#order').css({display:'block'});
@@ -38,6 +42,7 @@ $('#placeOrder-link').on('click',()=>{
 $('#orderDetail-link').on('click',()=>{
     console.log("course click")
 
+    $('#dashboard').css({display:'none'});
     $('#customer').css({display:'none'});
     $('#item').css({display:'none'});
     $('#order').css({display:'none'});
